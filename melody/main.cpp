@@ -1,4 +1,5 @@
 #include "generator/generator.h"
+#include "noiseAdder/noiseAdder.h"
 #include "wavwritter/wavwritter.h"
 #include "wavplay/wavplay.h"
 
@@ -10,14 +11,17 @@ int main() {
     double SNR = 60.0;        // Соотношение сигнал/шум в дБ
 
     // Генерация сигнала
-    SignalGenerator generator(frequency, duration, sampleRate, SNR);
+    SignalGenerator generator(frequency, duration, sampleRate);
     generator.generateSignal();
-    generator.addNoise();
+
+    // Добавление шума
+    NoiseAdder noiseAdder(SNR);
+    noiseAdder.addNoise(generator.signal);
 
     // Запись в WAV файл
     WavWriter writer(sampleRate, 16, 1);  // Частота, битность, число каналов (моно)
     std::string filename = "D:\\UNIVER\\9 semestr\\RadioMonitoring\\generation\\mixed_signal_C.wav";
-    writer.writeWavFile(filename, generator.mixedSignal);
+    writer.writeWavFile(filename, noiseAdder.mixedSignal);
 
     // Воспроизведение WAV файла через Windows Media Player
     playWavFile(filename);

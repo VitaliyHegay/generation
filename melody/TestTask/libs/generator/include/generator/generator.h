@@ -49,6 +49,9 @@ public:
     // Подсчет мощности сигнала
     double calculatePower(const std::vector<double>& data) {
         double power = 0.0;
+
+        //if (data.empty()) return 0.0; // Защита от деления на ноль
+
         for (double x : data) {
             power += x * x;
         }

@@ -46,12 +46,12 @@ noise = sqrt(noise_power) * noise;  % Масштабирование шума д
 % Итоговая смесь
 mixed_signal = signal + noise;
 
-% spectr_m_s = fftshift(fft(mixed_signal));
-% freqs = -Fs/2:Fs/length(mixed_signal):(Fs/2)-Fs/length(mixed_signal);
-% 
-% plot(freqs,abs(spectr_m_s));
-% grid on
-% 
+spectr_m_s = fftshift(fft(mixed_signal));
+freqs = -Fs/2:Fs/length(mixed_signal):(Fs/2)-Fs/length(mixed_signal);
+
+plot(freqs,abs(spectr_m_s));
+grid on
+
 % % Визуализация сигнала и смеси
 % figure;
 % subplot(3,1,1);

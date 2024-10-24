@@ -1,5 +1,5 @@
 clc
-clear, 
+clear
 
 % 1. Открыть wav-файл
 [file, path] = uigetfile('*.wav', 'Выберите wav-файл');  % Диалоговое окно для выбора файла

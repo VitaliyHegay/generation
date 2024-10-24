@@ -7,18 +7,17 @@
 
 class SignalGenerator {
 private:
-    double frequency;     // Частота сигнала
-    double duration;      // Длительность сигнала
-    int sampleRate;       // Частота дискретизации
+    double A;         // Амплитуда сигнала
+    double f0;     // Частота сигнала
+    double dT;      // Длительность сигнала
+    int Fs;       // Частота дискретизации
 
 public:
-    std::vector<double> signal;
-
     // Конструктор
-    SignalGenerator(double freq, double dur, int rate);
+    SignalGenerator(double amp, double freq, double dur, int rate);
     static int foo();
     // Генерация синусоидального сигнала
-    void generateSignal();
+    std::vector<double> generateSignal();
 };
 
 #endif
